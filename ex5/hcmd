@@ -1,0 +1,44 @@
+hdfs dfs -mkdir -p /user/hduser/MapReduceInput 
+hdfs dfs -copyFromLocal /home/hduser/input/file1.txt /user/hduser/MapReduceInput
+hdfs dfs -put /home/hduser/input/file1.txt /user/hduser/MapReduceInput
+
+
+/usr/local/hadoop/bin/hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.4.jar wordcount /user/hduser/MapReduceInput /user/hduser/MapReduceOutput
+
+hdfs dfs -rm -r /user/hduser/MapReduceOutput
+
+hdfs dfs -ls /user/hduser/MapReduceOutput
+
+hdfs dfs -cat /user/hduser/MapReduceOutput/part-r-00000
+
+
+<!--property> 
+    <name>yarn.scheduler.minimum-allocation-mb</name> 
+    <value>1228</value>
+</property>
+<property> 
+    <name>yarn.scheduler.maximum-allocation-mb</name> 
+    <value>9830</value>
+</property>
+<property> 
+    <name>yarn.nodemanager.resource.memory-mb</name> 
+    <value>9830</value>
+</property-->
+
+<!--property>
+    <name>mapreduce.map.memory.mb</name>
+    <value>4096</value>
+  </property>
+<property>
+    <name>mapreduce.reduce.memory.mb</name>
+    <value>8192</value>
+</property-->
+
+<!--property>
+    <name>mapreduce.map.java.opts</name>
+    <value>-Xmx3072m</value>
+  </property>
+<property>
+    <name>mapreduce.reduce.java.opts</name>
+    <value>-Xmx6144m</value>
+</property--> 
