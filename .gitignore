@@ -1,4 +1,4 @@
 *.jar
-cloudApp/
+*.tar.gz
 python-docs-samples-master.zip
 python-docs-samples-master/
